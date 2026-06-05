@@ -1,32 +1,34 @@
 from curl_cffi import requests as re
+# import requests as re
 
 def request(url):
     payload = {}
     headers = {
-    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'accept-language': 'en-US,en;q=0.9',
-    'cache-control': 'no-cache',
-    'pragma': 'no-cache',
-    'priority': 'u=0, i',
-    'referer': 'https://www.martindale.com/',
-    'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
-    'sec-ch-ua-arch': '"x86"',
-    'sec-ch-ua-bitness': '"64"',
-    'sec-ch-ua-full-version': '"148.0.7778.217"',
-    'sec-ch-ua-full-version-list': '"Chromium";v="148.0.7778.217", "Google Chrome";v="148.0.7778.217", "Not/A)Brand";v="99.0.0.0"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-model': '""',
-    'sec-ch-ua-platform': '"Windows"',
-    'sec-ch-ua-platform-version': '"19.0.0"',
-    'sec-fetch-dest': 'document',
-    'sec-fetch-mode': 'navigate',
-    'sec-fetch-site': 'same-origin',
-    'sec-fetch-user': '?1',
-    'upgrade-insecure-requests': '1',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
-    'Cookie': 'launch=prod-mac; mdcgeo={%22country%22:%22IN%22%2C%22state%22:%22GJ%22}; AMCVS_5C64123F5245AF950A490D45%40AdobeOrg=1; AMCV_5C64123F5245AF950A490D45%40AdobeOrg=179643557%7CMCIDTS%7C20608%7CMCMID%7C24371211224756744202422989225405759498%7CMCAAMLH-1781081843%7C12%7CMCAAMB-1781081843%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1780484243s%7CNONE%7CvVersion%7C5.5.0; s_vnc365=1812013043476%26vn%3D1; s_ivc=true; s_inv=0; year=YnJvd3NlcklkPTE4MTM3MzkyMTM=; hour=c2Vzc2lvbklkPTE2NTU1MzA3OTYmcmVmZXJEb21haW5TZW80Qj13d3cubWFydGluZGFsZS5jb20=; _ga=GA1.1.121149449.1780477045; invoca_session=%7B%22ttl%22%3A%222026-07-03T08%3A58%3A54.616Z%22%2C%22session%22%3A%7B%22invoca_id%22%3A%22i-c296a0f6-72a2-468e-966e-2555e1b1a7b1%22%7D%2C%22config%22%3A%7B%22ce%22%3Atrue%2C%22fv%22%3Afalse%2C%22rn%22%3Afalse%7D%7D; laravel_session=eyJpdiI6IkxQZmE2dEsxNTd2c1Mxc24xQXhIaVE9PSIsInZhbHVlIjoidEdpcG11VzZvaUEwekRpNUhoOTd0b25EN05EbDNucGp6cmJCWHRtNXk0RHlpRG5ETVhBeXlBUTgrOXZzQkpVZnRScmRLNU1FbXB1YnZENmpONzFzRVhKQkNLY2xTWU5LdGJjVUxnN1ZIb00xbVNXWERKcnpuVElLSFdaTDltVTMiLCJtYWMiOiI5ZTQyYjJmMTYyOGFlOGU4YTI5ZWNiMzQ2YzFkN2ExZmI1OWNkOGRkYzJiYWY5YzUzNjI4NGE3MzEwOTU3OTkxIiwidGFnIjoiIn0%3D; cf_clearance=USsfAgS6d19j8tzVqExZdxvnNgvloknzenMK7gMlYSo-1780477902-1.2.1.1-2HKKijVPBaYwNvbZ5iOT3zQq.s.xqqy5uytnaVO56ZSwarJ2cJHFCvFiX83pJLqMAhKMwLscwcs_iLTk_toQqheZ4mAdG70TnfV2Ba7q7Yt.cfcKzlgiWZGloAUZcAprAGWYpteegLnl_b6N4LCbHgmfgRAPo4Le4.M_wGL6HjI0DWukwUzJefKSjqyp3achHY2Pvqrl4FOMNqBDKGlWGeI2ygXKffMP3Bxg5_ACoo19rYYkvYgZX4ftws8dHZ.NIwIIP9ztY7v9aUnWQPlqz_615OtKaX2fSATF3UxYG8X2TQyPafuYFBTRZ6w4hwQqXkyuTfH9QD6jkQRU.zSiuagICTdZyN0BqXxVBWj0312EgHl6diQICTt16q257qnLJdvDXgC0HBVjILJoCYPlmgfNDlRJ3rWICfNaM1b9jO4; __cf_bm=aGGLiUn0qduTUg4A0I6kxQ0pDBumsG1krPe.6DmSGWA-1780477902.7608855-1.0.1.1-B6mDTLaXKCZ59z3zRe7dzr_RAXQTeemWh1AeHTJ48FBFHKUYgKz1nVaH0vei5MJ_X9z7UXCOlO1vvyc1dOZ5uaxLbll6cccn7LjEmA2Xgy5VIDwtZVUWwgBWroskYBl7; s_nr30=1780477902961-New; s_tslv=1780477902962; gpv_v12=Martindale.com%3AHomepage%3Aexplore%20the%20richest%20database%20of%20legal%20professionals; gpv_v22=https%3A%2F%2Fwww.martindale.com%2F; s_sess=%20s_cc%3Dtrue%3B%20s_sq%3Dfindlawmartindale%25252Cfindlaw-global-v1%253D%252526c.%252526a.%252526activitymap.%252526page%25253DMartindale.com%2525253AHomepage%2525253Aexplore%25252520the%25252520richest%25252520database%25252520of%25252520legal%25252520professionals%252526link%25253DWorkers%25252520Compensation%252526region%25253DBODY%252526pageIDType%25253D1%252526.activitymap%252526.a%252526.c%252526pid%25253DMartindale.com%2525253AHomepage%2525253Aexplore%25252520the%25252520richest%25252520database%25252520of%25252520legal%25252520professionals%252526pidt%25253D1%252526oid%25253Dhttps%2525253A%2525252F%2525252Fwww.martindale.com%2525252Fareas-of-law%2525252Fworkers-compensation-lawyers%2525252F%252526ot%25253DA%3B; stats=20260603011149247877C,,BBAP,,20260603005738693284C,FIRM_PROFILE; _ga_19ND86TN6P=GS2.1.s1780477045$o1$g1$t1780477909$j53$l0$h0; _ga_ZVZW1DXN1H=GS2.1.s1780477045$o1$g1$t1780477909$j53$l0$h2007597054; laravel_session=eyJpdiI6IitiNnRNbTVGZGc0UkRRR09IYXlxOWc9PSIsInZhbHVlIjoidXdTZEk0TTZQeFR3NlFPUldVeFdNeXZzYkVZZ2ZwMGtKTEpENTRRVGZ3dEVnWmJ4eC8zaFlUUjNrdlFlSmVwUng0Z1hYS1RjalNCcUZFZG1yV0Rtc1NuUlVoMFhkWThuMU1JaE8xY2JPbmMzWjZtQWU3cTRJck56SzlIZiszVVUiLCJtYWMiOiJjNmZkZjkyNDYzZTIzYzkwY2NjMjMyZThiMTAzN2VkOWM5MjljM2I0M2Q2YWJmMDVkMTllNjZhZTAzZGNiNDM0IiwidGFnIjoiIn0%3D'
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'accept-language': 'en-US,en;q=0.9',
+        'cache-control': 'no-cache',
+        'pragma': 'no-cache',
+        'priority': 'u=0, i',
+        'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
+        'sec-ch-ua-arch': '"x86"',
+        'sec-ch-ua-bitness': '"64"',
+        'sec-ch-ua-full-version': '"148.0.7778.179"',
+        'sec-ch-ua-full-version-list': '"Chromium";v="148.0.7778.179", "Google Chrome";v="148.0.7778.179", "Not/A)Brand";v="99.0.0.0"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-model': '""',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-ch-ua-platform-version': '"19.0.0"',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'none',
+        'sec-fetch-user': '?1',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
+        'cookie': 'mdcgeo={%22country%22:%22IN%22%2C%22state%22:%22GJ%22}; AMCVS_5C64123F5245AF950A490D45%40AdobeOrg=1; BIGipServerwebvis-web=663818250.0.0000; _gid=GA1.2.1205324394.1780476250; _ga=GA1.1.458511340.1780476155; _hjSessionUser_386321=eyJpZCI6IjM5MjdlNDYzLTQ4MDEtNTk2NS04ODUzLTY0Zjg0ZTIwZTZjNSIsImNyZWF0ZWQiOjE3ODA0NzYyNTA0NjksImV4aXN0aW5nIjp0cnVlfQ==; _uetsid=640b37005f2811f1b698cfad4e9a8e6f; _uetvid=640ba7805f2811f1bf4e7d809b350e27; _pk_ref.7200.fb7a=%5B%22upper_button_8-15%22%2C%22%22%2C1780476251%2C%22%22%5D; _pk_id.7200.fb7a=e39c9008c5f65f17.1780476251.; _ibp=0:mpxtl7x0:53a50c81-cd69-4cfe-b8fd-3d407c344ae4; _ibs=0:mpxtl7x3:bb0468ac-b6f8-4cf3-9d70-a3ad033b6659; year=YnJvd3NlcklkPTE0MDczMDg3NTI=; hour=c2Vzc2lvbklkPTQ5NTAxOTU5MyZyZWZlckRvbWFpblNlbzRCPXd3dy5tYXJ0aW5kYWxlLmNvbQ==; searchSeed=678148874; radiusSearch=30; mdc-search-criteria=e2tleXdvcmQ6LGxpbWl0OjMwLHByYWN0aWNlQXJlYXM6ezc4MDpXb3JrZXJzIENvbXBlbnNhdGlvbn0sbG9jYXRpb25zOntBYmJldmlsbGUsIEFMOmNpOjFzdDoxY3U6MX0sY2l0eTpBYmJldmlsbGUsc3RhdGU6MSxjb3VudHJ5OjEsY2F0ZWdvcnk6cGVvcGxlfQ==; OptanonConsent=isGpcEnabled=0&datestamp=Wed+Jun+03+2026+14%3A32%3A40+GMT%2B0530+(India+Standard+Time)&version=202510.2.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=3408f3d3-1535-4bfd-946e-fb30a80a5ec0&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Fwww.martindale.com%2Fmarketyourfirm%2F%3Futm_source%3Dmartindale%26utm_medium%3Dlink%26utm_campaign%3Dupper_button_8-15&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1; _ga_HE50QBXY1Z=GS2.1.s1780476250$o1$g1$t1780477360$j60$l0$h0; launch=prod-mac; AMCV_5C64123F5245AF950A490D45%40AdobeOrg=179643557%7CMCIDTS%7C20608%7CMCMID%7C49728056045357985381140870985610208943%7CMCAAMLH-1781160927%7C6%7CMCAAMB-1781160927%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1780563327s%7CNONE%7CvVersion%7C5.5.0; s_vnc365=1812092127058%26vn%3D2; s_ivc=true; s_inv=79315; gpv_v22=https%3A%2F%2Fwww.martindale.com%2F; BIGipServerlgl-martindale-k8sw_24080_POOL=3532656650.4190.0000; s_sess=%20s_sq%3D%3B%20s_cc%3Dtrue%3B; cf_clearance=wKMWjePrsyEEFZrEgyFpsnbCGxLbgiMbKVSPr1T58PM-1780559485-1.2.1.1-oFbZB8SDIX5jzS.yhrYxwsWxyv25lBgmCmOgKVxSsSvrSUzOBbt2rLw4FjEqkYuC1kZStMG6EmzPK.QDoE_mWBmHcvlKJ25UKolbFE68c_TaiTYB9Bt5R9ukL5PT2sr2jXd_hGCK2zhT2dhTTp7Nf3sUZI8P8raMS35Wbbl8uQyO8R1qW7_L8S8U.R5ZCyUpOR0kaLJDMGsgQPzKp4u.8Nxf3pz44aJUe7Vv9f7pLJNgrIeHS2jhC.XxWlfiY7iuFJ0PlEwqLh7kLVWGA8MJy2E8nKu798OlQIUNmJagcxxH4qSQmuSC2hUIOUw3PGwh7hYyR6WGASDn1afJJFsVyBKi0CSSBc.DFlq.eRVmJjr6Hn41wbk4N8I9BGffBHKsYe.wE6y9JFcYYtssGoermjSmHmAMP_rfkv.BYrbG7.I; __cf_bm=2PlqBELxfK8baC4cwe1H6NTLa22lghdMPOyTDoc2HFk-1780559485.799255-1.0.1.1-sLBzVmg9SjSWOzGCvFqTC8rcFCD7iFncVmy4dDdpYsmpdGZ59zPxwhhvF5_GtW2YmD.6ZvCfV5D8WiX3vJLEOBliwezVlJaWeqg2jZGgZeWnZZB2gwY8qF0CH82iwD.X; laravel_session=eyJpdiI6Ik9zTzVpeDhFK0gwd1FnWGxEV2hZTmc9PSIsInZhbHVlIjoibXhkYzNHaUFuOU8rd0xhM3laZG9hSXdjU3VVaDBQc2NrN0lrU1hRZ2E2VUtSM2IrbDIwZWtRMXg0dXNpd1ZNTERDdGVUZTJ3VnY5TzNTSUNmZ0J1Z3B0c3FUVjdnSUEwMHhLbmkrWVNUL2dHQnRHSGdxaW44SDlSYTJWa1M2bXMiLCJtYWMiOiJiNGY5Zjk5ZmU1ZWYzMjhmOWVmNTdhY2JjYjU4MDM2NzZhMjNkMTc0MDMxZjU2MmYxYmQ4NjdjMmU4ZDgxYTBjIiwidGFnIjoiIn0%3D; s_nr30=1780559486601-Repeat; s_tslv=1780559486605; gpv_v12=Martindale.com%3ADirectory%3AProfileView%3AFirmProfile%3Alaw%20offices%20of%20marc%20friedman; stats=20260603235126307180C,20260603005331335753C,FIRM_PROFILE,20260603005331056063C,20260603233825928356C,FIRM_PROFILE; _ga_19ND86TN6P=GS2.1.s1780556131$o4$g1$t1780559490$j60$l0$h0; _ga_ZVZW1DXN1H=GS2.1.s1780556131$o4$g1$t1780559491$j60$l0$h1478464404; invoca_session=%7B%22ttl%22%3A%222026-07-04T07%3A52%3A25.939Z%22%2C%22session%22%3A%7B%22invoca_id%22%3A%22i-f19ffec2-d4bd-4993-f797-dbec42cbe4c5%22%7D%2C%22config%22%3A%7B%22ce%22%3Atrue%2C%22fv%22%3Afalse%2C%22rn%22%3Afalse%2C%22ba%22%3Atrue%2C%22br%22%3Atrue%7D%7D',
     }
-    response = re.request("GET", url, headers=headers, data=payload, impersonate='chrome136')
+    response = re.request("GET", url, headers=headers, data=payload, impersonate='chrome120')
+    print(response.status_code)
+    print
     if response.status_code == 200:
         return response.text
     else:
